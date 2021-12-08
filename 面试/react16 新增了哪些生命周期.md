@@ -1,0 +1,5 @@
+https://github.com/sisterAn/JavaScript-Algorithms
+
+1.getDerivedStateFromProps: 该函数在挂在阶段和组建更新阶段都会执行，每次获取新的props或者state之后都会执行，在挂载阶段用来代替componentWillMount；在组建更新阶段配合componentDidUpdate，可以覆盖componentWillReceivePorps的所有用法。他是一个静态函数 不能访问this,会根据nextProps和Prestate
+
+2.getSnapshotBeforeUpdate: render之后 domg更新之前执行，用于读取最新dom数据

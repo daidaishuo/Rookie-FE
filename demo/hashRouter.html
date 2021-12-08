@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <script>
+        // https://zhuanlan.zhihu.com/p/130995492
+        class HashRouter {
+            currentUrl = ''; // 当前的URL
+            handlers = {};
+        
+            constructor() {
+                this.refresh = this.refresh.bind(this);
+                window.addEventListener('load', this.refresh, false);
+                window.addEventListener('hashchange', this.refresh, false);
+            }
+        
+            getHashPath(url) {
+                const index = url.indexOf('#');
+                if(index >= 0 ){
+                    return url.slice(index + 1);
+                }
+                return '/' 
+                    
+            }
+            refresh(event) {
+                let curURL = '',
+                    oldURL = null;
+                // hashChange
+                if(event.newURL){
+                    curURL = this.getHashPath(event.newURL || '')
+                    oldURL = this.getHashPath(event.oldURL || '')
+                }else{
+                    curURL = this.getHashPath(window.location.hash)
+                }
+
+                this.currentUrl = curURL;
+            }
+        }
+        const hashRouter = new HashRouter()
+        
+        </script>
+    <body>
+        12312311111
+    </body>
+
+
+</html>
