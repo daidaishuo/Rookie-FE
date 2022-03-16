@@ -9,7 +9,13 @@ function flatten(arr) {
 }
 
 function flatten(arr) {
-    return arr.reduce((pre,curr) => {
+    return arr.reduce((pre, curr) => {
+        pre.concat(Array.isArray(curr) ? flatten(curr) : curr)
+    }, [])
+}
+
+function flatten(arr) {
+    return arr.reduce((pre, curr) => {
         pre.concat(Array.isArray(curr) ? flatten(curr) : curr)
     }, [])
 }

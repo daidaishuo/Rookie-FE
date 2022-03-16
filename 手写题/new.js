@@ -21,7 +21,16 @@ function MyNew() {
 function myNew(){
     const Constructor = Array.prototype.shift.call(arguments);
     const obj = Object.create(null);
-    obj._proto_ = Constructor.prototype;
+    obj.__proto__ = Constructor.prototype;
     const res = Constructor.apply(obj,arguments)
     return res instanceof Object ? res : obj
+}
+
+function myNew(){
+    const Constructor = Array.prototype.shift.call(arguments);
+    const obj = Object.create(null);
+    obj.__proto__ = Constructor.prototype;
+    const res = Constructor.apply(obj,arguments);
+    return res instanceof Object ? res : obj
+    
 }
