@@ -1,0 +1,6 @@
+1. 起一个soket本地服务器
+2. 注册一个hooks 在done时候 websocket给浏览器发送通知 拿到新hash
+3. 监听本地文件变化
+4. 浏览器监听到变化 检查更新 通过jsonp的方式 
+   
+https://juejin.cn/post/6844904008432222215

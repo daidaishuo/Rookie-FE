@@ -1,11 +1,3 @@
-function myNew(constructor) {
-    var o = Object.create(null)
-    o._proto_ = constructor.prototype;
-    constructor.apply(o, Array.prototype.slice.call(arguments, 1))
-    return o;
-}
-
-
 function MyNew() {
     let Constructor = Array.prototype.shift.call(arguments); // 1：取出构造函数
 
@@ -24,13 +16,4 @@ function myNew(){
     obj.__proto__ = Constructor.prototype;
     const res = Constructor.apply(obj,arguments)
     return res instanceof Object ? res : obj
-}
-
-function myNew(){
-    const Constructor = Array.prototype.shift.call(arguments);
-    const obj = Object.create(null);
-    obj.__proto__ = Constructor.prototype;
-    const res = Constructor.apply(obj,arguments);
-    return res instanceof Object ? res : obj
-    
 }
