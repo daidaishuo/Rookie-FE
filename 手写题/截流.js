@@ -1,6 +1,6 @@
 function throttle(fn, delay) {
     let canRun = false;
-    return function (arg) {
+    return function (args) {
         let [that, _args] = [this, args]
         if (!canRun) return
         canRun = false;
@@ -11,13 +11,15 @@ function throttle(fn, delay) {
     }
 }
 
-function throttle2(fn, delay) {
-    let last = '';
-    let deferTimer = null;
+function throttle(fn, wait) {
+    var prev = 0
     return function () {
-        let now = +new Date();
-        if (last && now < last + delay) {
-            deferTimer 
+        let now = Date.now()
+        let context = this
+        let args = arguments
+        if (now - prev > wait) {
+            fn.apply(context, args)
+            prev = now
         }
     }
 }
