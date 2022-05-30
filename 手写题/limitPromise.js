@@ -10,7 +10,6 @@ const limitPromiseAll = async (limit, pArr) => {
     for (let fn of pArr) {
         const p = Promise.resolve().then(() => fn())
         res.push(p)
-        // promise执行完毕，从executing数组中删除
         const e = p.then(() => execArr.splice(execArr.indexOf(e), 1))
         execArr.push(e)
         if (execArr.length >= limit) {
@@ -24,7 +23,7 @@ const limitPromiseAll = async (limit, pArr) => {
 const limitPromise = async (limit, pArr) => {
     const res = [], execArr = [];
     for (let fn of pArr) {
-        const p = Promise.resolve().then()
+        const p = Promise.resolve().then(() => fn())
         res.push(p)
         const e = p.then(() => execArr.splice(execArr.indexOf(e), 1))
         execArr.push(e)
@@ -34,3 +33,18 @@ const limitPromise = async (limit, pArr) => {
     }
     return Promise.all(res)
 }
+
+const limitPromise = async (limit, pArr) => {
+    const res = [], execArr = [];
+    for (let fn of pArr) {
+        const p = Promise.resolve().then(() => fn())
+        res.push(p)
+        const e = p.then(() => execArr.splice(execArr.indexOf(e), 1))
+        execArr.push(e)
+        if(execArr.length >=limit){
+            await Promise.race(execArr)
+        }
+    }
+    return Promise.all(res)
+}
+

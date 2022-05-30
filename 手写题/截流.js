@@ -1,25 +1,28 @@
-function throttle(fn, delay) {
-    let canRun = false;
-    return function (args) {
-        let [that, _args] = [this, args]
-        if (!canRun) return
-        canRun = false;
-        setTimeout(() => {
-            fn.apply(that, _args)
-            canRun = true
-        }, delay)
+// 一段时间只执行一次
+function throttle(func, wait) {
+    let context, args;
+    let previous = 0;
+    return function () {
+        let now = +new Date();
+        context = this;
+        args = [...arguments];
+        if (now - previous > wait) {
+            func.apply(context, args)
+            previous = now;
+        }
     }
 }
 
-function throttle(fn, wait) {
-    var prev = 0
+function throttle(func, wait) {
+    let timeout;
     return function () {
-        let now = Date.now()
-        let context = this
-        let args = arguments
-        if (now - prev > wait) {
-            fn.apply(context, args)
-            prev = now
+        let context = this;
+        let args = [...arguments]
+        if (!timeout) {
+            timeout = setTimeout(function () {
+                timeout = null
+                func.apply(context, args)
+            }, wait)
         }
     }
 }

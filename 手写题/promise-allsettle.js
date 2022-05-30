@@ -17,34 +17,6 @@ Promise.allSettled = function (values) {
                     value: err
                 }
             }).finally(() => {
-
-                if (count === len) {
-                    reslove(promiseResultes)
-                }
-            })
-        })
-    })
-}
-
-Promise.allSettled = function (values) {
-    let len = values.length;
-    let promiseResultes = [];
-    let count = 0;
-    return new Promise((reslove, reject) => {
-        values.forEach((item, index) => {
-            Promise.reslove(item).then((res) => {
-                count++
-                promiseResultes[index] = {
-                    status: 'fulfilled',
-                    values: res
-                }
-            }).catch((e) => {
-                count++
-                promiseResultes[index] = {
-                    status: 'fulfilled',
-                    values: e
-                }
-            }).finally(() => {
                 if (count === len) {
                     reslove(promiseResultes)
                 }

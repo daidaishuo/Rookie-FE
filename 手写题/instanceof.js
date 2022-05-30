@@ -1,23 +1,12 @@
 function myInstanceof(target, origin) {
-    if (typeof target !== 'object' || target === null) return false;
     let proto = Object.getPrototypeOf(target);
     while (true) {
-        if (origin.prototype === proto) {
+        if (proto === origin.prototype) {
             return true
         }
-        proto = Object.getPrototypeOf(proto);
-
-    }
-    return false
-}
-
-function myInstanceof(target,origin){
-    let proto = Object.getPrototypeOf(target);
-    while(true){
-        if(proto === origin.prototype){
-            return true
+        if (proto === null) {
+            return false;
         }
         proto = Object.getPrototypeOf(proto)
     }
-    return false
 }

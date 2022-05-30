@@ -20,3 +20,4 @@ function compose(middleware) {
     }
   }
 }
+
