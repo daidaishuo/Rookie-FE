@@ -12,18 +12,20 @@ function debounce(func, delay) {
     }
 }
 
-
-function debounce(fn, timmer) {
-    let timmer = null
-    return function () {
-        if (!timmer) {
-            timmer = setTimeout(fn, timmer)
+function debounce(func, delay) {
+    let timer = null;
+    return function (...args) {
+        let ctx = this;
+        if (timmer) {
+            clearTimeout(timer)
         } else {
-            clearTimeout(timmer)
-            timmer = setTimeout(fn, timmer)
+            timer = setTimeout(function () {
+                func.apply(ctx, args)
+            })
         }
     }
 }
+
 
 
 function debounce(fn, timmer, immdiate) {
@@ -38,12 +40,12 @@ function debounce(fn, timmer, immdiate) {
 
             let callNow = !timeout;
 
-            timeout = setTimeout(function(){
+            timeout = setTimeout(function () {
                 timeout = null;
             }, wait)
 
             if (callNow) result = func.apply(self, args)
-            
+
         } else {
 
             timeout = setTimeout(function () {

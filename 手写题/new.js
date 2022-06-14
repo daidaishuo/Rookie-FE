@@ -33,11 +33,9 @@ function myNew() {
 function myNew() {
     const obj = Object.create(null);
     const Constructor = [].shift.call(arguments);
-
     obj.__proto__ = Constructor.prototype;
-
+    // 生成的新对象会绑定到函数调用的`this`。
     const res = Constructor.apply(obj, arguments)
-
     return typeof res === 'object' ? res : obj
 
 }

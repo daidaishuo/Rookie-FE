@@ -31,9 +31,7 @@ https://github.com/mqyqingfeng/Blog/issues/12
 Function.prototype.myBind = function (ctx) {
     let self = this;
     let args = [...arguments].slice(1);
-    const temp = function () {
-
-    }
+    const temp = function () {}
     const res = function () {
         let bindArgs = [...arguments];
 

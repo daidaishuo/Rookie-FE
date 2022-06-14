@@ -52,3 +52,29 @@
 // ‘new 的过程’的第三步，其实就是执行了父类构造函数。
 // 第二次：Parent.call(this,name,like)
 // call的作用是改变函数执行时的上下文。比如：A.call(B)。其实，最终执行的还是A函数，只不过是用B来调用而已。所以，你就懂了Parent.call(this,name,like) ,也就是执行了父类构造函数。
+
+
+
+function Parent(name) {
+    this.name = name;
+}
+
+Parent.sayHello = function(){
+    console.log('hello');
+}
+
+Parent.prototype.sayName = function(){
+    return this.name;
+}
+
+function Child(name,age){
+    Parent.call(this,name)
+    this.age = age
+}
+
+Child.prototype = Object.create(Parent.prototype)
+
+Child.prototype.constructor = Child
+
+Child.__proto__ = Parent
+
