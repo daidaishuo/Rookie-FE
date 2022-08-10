@@ -13,3 +13,9 @@ function flatten(arr){
         return pre.concat(Array.isArray(curr) ? flatten(curr) : curr)
     },[])
 }
+
+function flatten(arr){
+    return reduce((pre,curr)=> {
+        pre.concat(Array.isArray(curr) ? flatten(curr) : curr )
+    },[])
+}

@@ -33,3 +33,14 @@ const time = () => {
 //     })
 // })()
 
+arr.reduce((p,item) => {
+    return p.then(() => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                console.log(item)
+                resolve()
+            },1000)
+        })
+    })
+},Promise.resolve())
+

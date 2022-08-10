@@ -26,6 +26,20 @@ function debounce(func, delay) {
     }
 }
 
+function debounce(fn){
+    let timer = null
+    return function (...args){
+        let ctx = this;
+        if(timeer){
+            clearTimeout()
+        }else{
+            timer = setTimeout(() => {
+                fn.apply(ctz,args)
+            });
+        }
+    }
+}
+
 
 
 function debounce(fn, timmer, immdiate) {

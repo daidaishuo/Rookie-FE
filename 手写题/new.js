@@ -51,3 +51,11 @@ function myNew() {
 
     return typeof res === 'object' ? res : obj
 }
+
+function myNew(){
+    let Constructor = [].shift.call(arguments);
+    const obj = Object.create(null);
+    obj.__proto__ = Constructor.prototype;
+    const res = Constructor.apply(obj,arguments);
+    return typeof res === 'object' ? res: obj
+}
