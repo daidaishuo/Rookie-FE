@@ -33,3 +33,5 @@ https://blog.csdn.net/Luoshengyang/article/details/50615628
 https://blog.csdn.net/Luoshengyang?type=blog
 
 https://zhuanlan.zhihu.com/p/54601110
+
+https://chromium.googlesource.com/chromium/src/+/master/docs/threading_and_tasks.md
