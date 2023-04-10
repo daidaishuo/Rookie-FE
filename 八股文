@@ -1,0 +1,41 @@
+八股文
+
+1. Promise then的第二个参数和catch的区别
+    a. 第二个参数无法捕获第一个参数的错误信息
+    b. 异常捕获就近原则，如果同时存在那么只会执行第二个参数
+
+2. http和https区别
+    传输二进制
+    服务端保留私钥，发送公钥
+    端口http80，https443
+3. 强缓存和协商缓存
+    强缓存 expires和cache-control
+    协商缓存 last-modify和etag
+
+4. http1.0、http1.1和http2.0区别
+5. rpc 相关概念
+6. egg 的插件和中间件区别
+7. vue 的响应机制，源码级别，非常细致
+8. vue2和vue3的区别
+9. computed、watch、watchEffect的区别
+10. 跨域解决方案 
+11. 图片懒加赞
+    a. element.getBoundingClientRect().top < window.innerHeight
+    b. InterSectionObserver, const ob = new InterSectionObserver; ob.obsever(element);
+12. csrf 攻击
+    a. cookie携带token和请求头携带Referer
+    b. 通过工具检测，例如 CSRF BUILDER
+13. vue-router
+    a. hash、 history、abstruct
+    b. hashChange、popState
+14. 页面渲染流程
+    dom树-cssom树-合并domcssom-计算几何信息-从左上开始绘制
+15. node定位问题
+    使用heapdump打快照，然后使用chrome-Memory-Load查看
+16. react Fiber 时间分片机制
+17. 常见加密方式AES、RSA
+18. 数据库id算法，雪花算法、ridis自增
+19. jsbridge原理，客户端如何处理js回调
+20. 浏览器进程线程
+21. 微前端实现方案，优劣对比
+22. monoreport、pnpm
