@@ -14,15 +14,20 @@ function throttle(func, wait) {
 }
 
 function throttle(func, wait) {
-    let timeout;
-    return function () {
-        let context = this;
-        let args = [...arguments]
-        if (!timeout) {
-            timeout = setTimeout(function () {
-                timeout = null
-                func.apply(context, args)
-            }, wait)
-        }
-    }
-}
+    let timer, lastCall;
+  
+    return function(...args) {
+      const now = new Date().getTime();
+  
+      if (lastCall && now < lastCall + wait) {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          lastCall = now;
+          func(...args);
+        }, wait);
+      } else {
+        lastCall = now;
+        func(...args);
+      }
+    };
+  }

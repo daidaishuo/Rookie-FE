@@ -57,3 +57,22 @@ Promise.all = function (values) {
         })
     })
 }
+
+
+Promise.all = function (values) {
+    const list = []
+    let count = 0
+    return new Promise((res, rej) => {
+        values.forEach((p,i) => {
+            p.then((r) => {
+                count++
+                list[i] = r
+                if (count === values.length) {
+                    res()
+                }
+            }).catch(e)(
+                list[i] = e
+            )
+        })
+    })
+}

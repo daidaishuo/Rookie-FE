@@ -41,10 +41,38 @@ const limitPromise = async (limit, pArr) => {
         res.push(p)
         const e = p.then(() => execArr.splice(execArr.indexOf(e), 1))
         execArr.push(e)
-        if(execArr.length >=limit){
+        if (execArr.length >= limit) {
             await Promise.race(execArr)
         }
     }
     return Promise.all(res)
 }
+
+
+function myPromiseAll(arr, limit) {
+    return new Promise((resolve, reject) => {
+        let count = 0
+        const n = arr.length
+        const res = new Array(n)
+        let index = 0
+        function step(i) {
+            if (count === n) {
+                resolve(res)
+                return
+            }
+            if (arr[index]) {
+                arr[index]().then(result => {
+                    res[i] = result
+                    count++
+                    step(index)
+                })
+            }
+            index++
+        }
+        for (let i = 0; i < limit; i++) {
+            step(i)
+        }
+    })
+}
+
 
